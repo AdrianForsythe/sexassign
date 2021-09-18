@@ -317,12 +317,12 @@ def parse_args():
         args.chrX = ["X","chrX","ChrX"]
 
     if args.exclude_list is not None:
-        args.exclude_contigs = set(parse_list(args.exclude_list))
+        args.exclude_contigs = parse_list(args.exclude_list)
     else:
         args.exclude_contigs = set(["Y","chrY","ChrY","M","MT","Mt"])
 
     if args.include_list:
-        args.include_contigs = set(args.include_contigs.split(","))
+        args.include_contigs = parse_list(args.include_list)
     else:
         args.include_contigs = None
 
@@ -386,4 +386,3 @@ if __name__ == "__main__":
         pdf.savefig(figure=fig2)
 
     pdf.close()
-
